@@ -1,0 +1,21 @@
+workflows:
+  ios-workflow:
+    name: iOS Build
+    max_build_duration: 60
+    environment:
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Install CocoaPods
+        script: pod install
+      - name: Build iOS
+        script: |
+          xcodebuild \
+            -workspace PB-KYC.xcworkspace \
+            -scheme PB-KYC \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath build/PB-KYC.xcarchive \
+            archive
+    artifacts:
+      - build/PB-KYC.xcarchive
