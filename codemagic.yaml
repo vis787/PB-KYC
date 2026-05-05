@@ -15,7 +15,8 @@ workflows:
             -scheme PB-KYC \
             -configuration Release \
             -sdk iphoneos \
-            -archivePath build/PB-KYC.xcarchive \
-            archive
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            build
     artifacts:
-      - build/PB-KYC.xcarchive
+      - build/**/*.ipa
